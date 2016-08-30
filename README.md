@@ -1,1 +1,1 @@
-# SimpleEventSystem
+# Simple Event System (ses)
