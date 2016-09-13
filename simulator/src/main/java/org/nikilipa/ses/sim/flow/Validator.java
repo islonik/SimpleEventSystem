@@ -4,7 +4,7 @@ import org.nikilipa.ses.sim.model.Task;
 import org.nikilipa.ses.sim.services.EventNotifierWrapper;
 import org.nikilipa.ses.sim.services.FinanceService;
 
-import java.util.PriorityQueue;
+import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -13,10 +13,10 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Validator implements Runnable {
 
     private final FinanceService financeService;
-    private final PriorityQueue<Task> fromCreator;
-    private final PriorityQueue<Task> toWorker;
+    private final PriorityBlockingQueue<Task> fromCreator;
+    private final PriorityBlockingQueue<Task> toWorker;
 
-    public Validator(FinanceService financeService, PriorityQueue<Task> fromCreator, PriorityQueue<Task> toWorker) {
+    public Validator(FinanceService financeService, PriorityBlockingQueue<Task> fromCreator, PriorityBlockingQueue<Task> toWorker) {
         this.financeService = financeService;
         this.fromCreator = fromCreator;
         this.toWorker = toWorker;

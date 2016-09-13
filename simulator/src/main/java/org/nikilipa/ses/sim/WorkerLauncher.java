@@ -11,9 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import java.util.PriorityQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.PriorityBlockingQueue;
 
 /**
  * Created by nikilipa on 7/23/16.
@@ -29,8 +29,8 @@ public class WorkerLauncher {
 
     private ExecutorService executorService = Executors.newFixedThreadPool(4);
 
-    private volatile PriorityQueue<Task> fromCreator;
-    private volatile PriorityQueue<Task> fromValidator;
+    private volatile PriorityBlockingQueue<Task> fromCreator;
+    private volatile PriorityBlockingQueue<Task> fromValidator;
 
     @PostConstruct
     public void post() {

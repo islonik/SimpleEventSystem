@@ -3,7 +3,7 @@ package org.nikilipa.ses.sim.flow;
 import org.nikilipa.ses.sim.model.Task;
 import org.nikilipa.ses.sim.services.EventNotifierWrapper;
 
-import java.util.PriorityQueue;
+import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -11,9 +11,9 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class Worker implements Runnable {
 
-    private final PriorityQueue<Task> priorityQueue;
+    private final PriorityBlockingQueue<Task> priorityQueue;
 
-    public Worker(PriorityQueue<Task> priorityQueue) {
+    public Worker(PriorityBlockingQueue<Task> priorityQueue) {
         this.priorityQueue = priorityQueue;
     }
 

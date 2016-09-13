@@ -5,7 +5,7 @@ import org.nikilipa.ses.events.Priority;
 import org.nikilipa.ses.sim.model.Task;
 import org.nikilipa.ses.sim.services.EventNotifierWrapper;
 
-import java.util.PriorityQueue;
+import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -16,9 +16,9 @@ public class Creator implements Runnable {
 
     private static final AtomicInteger counter = new AtomicInteger();
 
-    private final PriorityQueue<Task> priorityQueue;
+    private final PriorityBlockingQueue<Task> priorityQueue;
 
-    public Creator(PriorityQueue<Task> priorityQueue) {
+    public Creator(PriorityBlockingQueue<Task> priorityQueue) {
         this.priorityQueue = priorityQueue;
     }
 
@@ -52,7 +52,7 @@ public class Creator implements Runnable {
                 System.out.println(String.format("Task %s with priority %s was created", task.getTitle(), task.getPriority()));
                 priorityQueue.add(task);
 
-                long sleep = Long.valueOf(ThreadLocalRandom.current().nextInt(6000, 8000));
+                long sleep = Long.valueOf(ThreadLocalRandom.current().nextInt(2000, 3000));
                 System.out.println(String.format("The creator thread decided to sleep '%s' millisec", sleep));
 
                 Thread.sleep(sleep);

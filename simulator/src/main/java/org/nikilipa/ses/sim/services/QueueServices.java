@@ -3,7 +3,7 @@ package org.nikilipa.ses.sim.services;
 import org.nikilipa.ses.sim.model.Task;
 import org.springframework.stereotype.Service;
 
-import java.util.PriorityQueue;
+import java.util.concurrent.PriorityBlockingQueue;
 
 /**
  * Created by nikilipa on 8/25/16.
@@ -11,14 +11,14 @@ import java.util.PriorityQueue;
 @Service
 public class QueueServices {
 
-    private final PriorityQueue<Task> creationQueue = new PriorityQueue<>();
-    private final PriorityQueue<Task> validationQueue = new PriorityQueue<>();
+    private final PriorityBlockingQueue<Task> creationQueue = new PriorityBlockingQueue<>();
+    private final PriorityBlockingQueue<Task> validationQueue = new PriorityBlockingQueue<>();
 
-    public PriorityQueue<Task> getValidationQueue() {
+    public PriorityBlockingQueue<Task> getValidationQueue() {
         return validationQueue;
     }
 
-    public PriorityQueue<Task> getCreationQueue() {
+    public PriorityBlockingQueue<Task> getCreationQueue() {
         return creationQueue;
     }
 
