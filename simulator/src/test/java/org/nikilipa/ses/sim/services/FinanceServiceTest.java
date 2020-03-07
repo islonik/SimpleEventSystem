@@ -1,21 +1,26 @@
 package org.nikilipa.ses.sim.services;
 
+import org.junit.Assert;
+import org.junit.runner.RunWith;
 import org.nikilipa.ses.sim.db.FinanceDao;
 import org.junit.Test;
-import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * Created by nikilipa on 7/25/16.
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "/application.xml" })
 public class FinanceServiceTest {
+
+    @Autowired
+    private FinanceService financeService;
 
     @Test
     public void testIsEnoughMoney() {
-        FinanceDao financeDao = Mockito.mock(FinanceDao.class);
-        FinanceService financeService = new FinanceService();
-        financeService.setDao(financeDao);
-
-        /*String financeCode = FinanceDao.FINANCE_CODE_MIGRATION;
+        String financeCode = FinanceDao.FINANCE_CODE_MIGRATION;
 
         int days1 = 40;
         int days2 = 60;
@@ -55,6 +60,6 @@ public class FinanceServiceTest {
         Assert.assertFalse(financeService.isEnoughMoney(financeCode, days8));
         Assert.assertFalse(financeService.updateFinance(financeCode, days8));
         Assert.assertTrue(financeService.isEnoughMoney(financeCode, days10));
-        Assert.assertTrue(financeService.updateFinance(financeCode, days10));*/
+        Assert.assertTrue(financeService.updateFinance(financeCode, days10));
     }
 }
